@@ -12,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(myConnection, SIGNAL(changedAngle2(int)),ui->lcdNumber_2,SLOT(display(int)));
     connect(myConnection, SIGNAL(changedAngle3(int)),ui->lcdNumber_3,SLOT(display(int)));
     connect(myConnection, SIGNAL(newDataToRead(Data)), myWykresy, SLOT(newDataToDraw(Data)));
+
+
+
+
 }
 
 MainWindow::~MainWindow()

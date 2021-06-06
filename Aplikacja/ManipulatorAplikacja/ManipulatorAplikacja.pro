@@ -4,6 +4,9 @@ QT += opengl
 QT += widgets
 QT += xml opengl
 QT+= widgets printsupport
+QT += 3drender
+QT += 3dextras
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -14,18 +17,18 @@ CONFIG += c++11
 
 SOURCES += \
     connection.cpp \
-    glwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
+    viewerman.cpp \
     wykresy.cpp
 
 HEADERS += \
     Data.h \
     connection.h \
-    glwidget.h \
     mainwindow.h \
     qcustomplot.h \
+    viewerman.h \
     wykresy.h
 
 FORMS += \

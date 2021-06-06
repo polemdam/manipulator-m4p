@@ -5,6 +5,11 @@
 #include "connection.h"
 #include "wykresy.h"
 #include "Data.h"
+
+#include <QBoxLayout>
+#include <QMessageBox>
+#include <QDesktopServices>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -34,6 +39,7 @@ private:
 
     Connection *myConnection;
     Wykresy *myWykresy;
+
 
 };
 #endif // MAINWINDOW_H
