@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(myConnection, SIGNAL(changedAngle1(int)),ui->lcdNumber,SLOT(display(int)));
     connect(myConnection, SIGNAL(changedAngle2(int)),ui->lcdNumber_2,SLOT(display(int)));
     connect(myConnection, SIGNAL(changedAngle3(int)),ui->lcdNumber_3,SLOT(display(int)));
+    connect(myConnection, SIGNAL(newDataToRead(Data)), this , SLOT(AddNewDataToViewer(Data)));
     connect(myConnection, SIGNAL(newDataToRead(Data)), myWykresy, SLOT(newDataToDraw(Data)));
 
 
@@ -52,3 +53,9 @@ void MainWindow::on_actionWykresy_triggered()
     myWykresy->show();
     myConnection->activateWindow();
 }
+
+void MainWindow::AddNewDataToViewer(Data newData)
+{
+    ui->widget->newAngles(newData);
+}
+

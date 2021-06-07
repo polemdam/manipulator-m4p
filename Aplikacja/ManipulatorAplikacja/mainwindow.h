@@ -5,7 +5,7 @@
 #include "connection.h"
 #include "wykresy.h"
 #include "Data.h"
-
+#include "viewerman.h"
 #include <QBoxLayout>
 #include <QMessageBox>
 #include <QDesktopServices>
@@ -25,6 +25,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+
+
 private slots:
 
     void on_actionPo_czenie_triggered();
@@ -32,6 +35,8 @@ private slots:
     void on_SendConf_clicked();
 
     void on_actionWykresy_triggered();
+
+    void AddNewDataToViewer(Data newData);
 
 private:
     Ui::MainWindow *ui;

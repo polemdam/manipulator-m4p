@@ -82,12 +82,8 @@ void Connection::addValuesOfAngles(int joint1, int joint2, int joint3)
 void Connection::SendConfiguration(int joint1, int joint2, int joint3)
 {
     QString message1="A";
-    if(joint1 >= 0){
-        message1+="+";
-    }
-    else{
-        message1+="-";
-    }
+
+
     if(abs(joint1) > 99){
         message1+=QString::number(abs(joint1));
     }
@@ -100,13 +96,11 @@ void Connection::SendConfiguration(int joint1, int joint2, int joint3)
 
 
     message1+="B";
-    if(joint2 >= 0){
-        message1+="+";
+
+    if(abs(joint2) > 99){
+        message1+=QString::number(abs(joint2));
     }
-    else{
-        message1+="-";
-    }
-    if(abs(joint1) > 9){
+    else if(abs(joint2) > 9){
          message1+="0"+QString::number(abs(joint2));
     }
     else{
@@ -116,18 +110,33 @@ void Connection::SendConfiguration(int joint1, int joint2, int joint3)
 
 
     message1+="C";
-    if(joint3 >= 0){
-        message1+="+";
+    if(abs(joint3) > 99){
+        message1+=QString::number(abs(joint3));
     }
-    else{
-        message1+="-";
-    }
-    if(abs(joint1) > 9){
+    else if(abs(joint3) > 9){
          message1+="0"+QString::number(abs(joint3));
     }
     else{
         message1+="00"+QString::number(abs(joint3));
     }
+    QByteArray messageByte=message1.toLocal8Bit();
+
+    char tab[12];
+    for(int i=0; i<12; i++){
+        tab[i]=messageByte[i];
+    }
+    int crc=checkCrc_8(tab, 12);
+
+    if(crc > 99){
+        message1+=QString::number(crc);
+    }
+    else if(crc > 9){
+         message1+="0"+QString::number(crc);
+    }
+    else{
+        message1+="00"+QString::number(crc);
+    }
+
 
 
     qDebug() << message1;

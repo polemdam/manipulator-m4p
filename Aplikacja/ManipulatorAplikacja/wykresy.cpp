@@ -80,18 +80,18 @@ void Wykresy::newDataToDraw(Data newData)
     time+=static_cast<double>(newData.Time)/1000;
 
       ui->widget->graph(0)->addData(time, newData.Angle1);
-      ui->widget->xAxis->setRange(time, 8, Qt::AlignRight);
+      ui->widget->xAxis->setRange(time, 80, Qt::AlignRight);
       ui->widget->replot();
       ui->widget->update();
 
       ui->widget_2->graph(0)->addData(time, newData.Angle2);
-      ui->widget_2->xAxis->setRange(time, 8, Qt::AlignRight);
+      ui->widget_2->xAxis->setRange(time, 80, Qt::AlignRight);
       ui->widget_2->replot();
       ui->widget_2->update();
 
 
       ui->widget_3->graph(0)->addData(time, newData.Angle3);
-      ui->widget_3->xAxis->setRange(time, 8, Qt::AlignRight);
+      ui->widget_3->xAxis->setRange(time, 80, Qt::AlignRight);
       ui->widget_3->replot();
       ui->widget_3->update();
 }
